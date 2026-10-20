@@ -10,7 +10,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const atlasBase = process.argv[2] ?? 'http://127.0.0.1:5180/';
-const dimensionUrl = process.argv[3] ?? 'http://127.0.0.1:4183/?quality=performance&view=baymax';
+const dimensionUrl = process.argv[3] ?? 'http://127.0.0.1:4183/?quality=performance&view=baymax&pairNotice=0';
 const out = process.argv[4] ?? 'docs/evidence/live-e2e';
 await mkdir(out, { recursive: true });
 
@@ -24,7 +24,7 @@ const check = (id, title, pass, data = {}) => { results.push({ id, title, pass, 
 const sleep = ms => atlas.waitForTimeout(ms);
 const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
 
-await atlas.goto(`${atlasBase}?dimension=${encodeURIComponent(dimensionUrl)}`);
+await atlas.goto(`${atlasBase}?pairNotice=0&dimension=${encodeURIComponent(dimensionUrl)}`);
 await atlas.waitForSelector('[data-testid="cmd-opening"]');
 const [dimension] = await Promise.all([atlas.waitForEvent('popup'), atlas.getByTestId('open-dimension').click()]);
 dimension.on('pageerror', e => errors.push(`dimension: ${e.message}`));
