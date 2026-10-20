@@ -1,0 +1,15 @@
+node_modules/
+dist/
+coverage/
+test-results/
+playwright-report/
+.serena/
+.gitnexus/
+*.tsbuildinfo
+.DS_Store
+docs/atlas-evidence/mission-directors-cut/video/*.mp4
+media/*.mp4
+media/*.log
+media/frames/
+media/*.zip
+scripts/_scratch_*

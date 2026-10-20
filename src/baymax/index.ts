@@ -1,0 +1,12 @@
+export { buildBaymax, BAYMAX_ASSET, BAYMAX_HEIGHT_METRES, SOCKET_LAYOUT } from './model';
+export type { ThrusterSocket, BaymaxRig, BaymaxLod } from './model';
+export { computeThrust, FlightDynamics, flicker, smoothDamp, worldToLocal, SOCKET_IDS, THRUST_TUNING, IDENTITY_QUAT } from './thrust';
+export type { FlightState, ThrustOutput, SocketId, Vec3, Quat } from './thrust';
+export { createBaymaxFx, updateBaymaxFx, plumeDimensions } from './fx';
+export type { BaymaxFx } from './fx';
+export { BaymaxHero } from './BaymaxHero';
+export type { BaymaxHeroProps, BaymaxHeroState } from './BaymaxHero';
+export { loadBaymaxHero, createBaymaxGhost, instantiateHero, applyHeroPose, disposeBaymaxHeroCache, defaultHeroBase, BAYMAX_HERO_FILES, HERO_NODES, HERO_SOCKET_NODES } from './glb';
+export type { HeroTemplate, HeroRig, HeroLod, HeroNodeName, BaymaxGhost } from './glb';
+export { PoseDynamics, POSE_TUNING, wingTarget } from './pose';
+export type { PoseOutput } from './pose';

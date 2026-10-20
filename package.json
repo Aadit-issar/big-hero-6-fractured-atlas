@@ -1,0 +1,41 @@
+{
+  "name": "big-hero-6-fractured",
+  "version": "0.2.0",
+  "private": true,
+  "description": "A deterministic mathematical world exploration prototype.",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "analyze:field": "tsx scripts/characterize.ts",
+    "analyze:connections": "tsx scripts/inspect-folds.ts",
+    "benchmark": "node scripts/benchmark.mjs",
+    "atlas:challenge:verify": "tsx scripts/atlas-challenge-verify.ts",
+    "atlas:challenge:fixture": "tsx scripts/atlas-challenge-fixture.ts",
+    "start": "vite --config src/atlas/lab/vite.config.ts --host 127.0.0.1 --port 5184 --strictPort",
+    "serve": "vite build --config src/atlas/lab/vite.config.ts && vite preview --config src/atlas/lab/vite.config.ts --host 127.0.0.1 --port 5184 --strictPort"
+  },
+  "keywords": [],
+  "type": "module",
+  "dependencies": {
+    "@react-three/fiber": "^9.8.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/three": "^0.186.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  }
+}

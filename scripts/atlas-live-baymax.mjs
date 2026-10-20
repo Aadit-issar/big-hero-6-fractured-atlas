@@ -1,0 +1,25 @@
+// Live-mode Baymax in flight (thrusters) and scanning, from the real linked session. Usage: node scripts/atlas-live-baymax.mjs [atlasBase] [dimensionUrl] [outDir]
+import { chromium } from '@playwright/test';
+import { join } from 'node:path';
+const atlasBase = process.argv[2] ?? 'http://127.0.0.1:5180/', dimensionUrl = process.argv[3] ?? 'http://127.0.0.1:4173/', out = process.argv[4] ?? 'docs/atlas-evidence/live-intelligence-final';
+const browser = await chromium.launch({ channel: 'chrome', headless: true, args: ['--use-angle=d3d11', '--ignore-gpu-blocklist'] });
+const context = await browser.newContext({ viewport: { width: 1920, height: 1080 } });
+const atlas = await context.newPage(); const errors = [];
+atlas.on('pageerror', e => errors.push(e.message));
+await atlas.goto(`${atlasBase}?experience=live&dimension=${encodeURIComponent(dimensionUrl)}`);
+const [dim] = await Promise.all([atlas.waitForEvent('popup'), atlas.getByRole('button', { name: /Open Dimension & connect/ }).click()]);
+await atlas.waitForFunction(() => window.__ATLAS_LIVE__?.snapshot().link.status === 'connected', null, { timeout: 120000 });
+await dim.waitForFunction(() => !!window.__FRACTURED_DIAGNOSTICS__, null, { timeout: 120000 });
+await atlas.waitForTimeout(5000);
+await atlas.screenshot({ path: join(out, 'baymax-live-01-hover.png') });
+await dim.bringToFront();
+await dim.keyboard.down('KeyW'); await dim.keyboard.down('ShiftLeft');
+await atlas.waitForTimeout(1400); await atlas.screenshot({ path: join(out, 'baymax-live-02-thrust-a.png') });
+await atlas.waitForTimeout(900); await atlas.screenshot({ path: join(out, 'baymax-live-03-thrust-b.png') });
+await dim.keyboard.up('KeyW'); await dim.keyboard.up('ShiftLeft');
+await atlas.waitForTimeout(600); await atlas.screenshot({ path: join(out, 'baymax-live-04-decelerating.png') });
+await atlas.evaluate(() => window.__ATLAS_LIVE__.requestScan());
+await atlas.waitForTimeout(500); await atlas.screenshot({ path: join(out, 'baymax-live-05-scan.png') });
+await atlas.waitForTimeout(1500); await atlas.screenshot({ path: join(out, 'baymax-live-06-scan-result.png') });
+console.log(errors.length ? errors.join('\n') : 'no page errors');
+await browser.close();

@@ -1,0 +1,14 @@
+import { chromium } from '@playwright/test';
+const [W,H]=(process.argv[2]??'1918x830').split('x').map(Number);
+const b = await chromium.launch({ channel:'chrome', headless:true, args:['--use-angle=d3d11','--ignore-gpu-blocklist','--enable-gpu-rasterization'] });
+const p = await b.newPage({ viewport:{width:W,height:H} });
+const base = process.env.BASE ?? 'http://127.0.0.1:5180/';
+await p.goto(process.env.OLD ? base + '?at=3' : base + '?sound=0&at=6&autoplay=1');
+if (process.env.OLD) await p.getByRole('button', { name: 'Play mission' }).click();
+await p.waitForTimeout(4000);
+await p.evaluate(()=>{window.__f=[];let l=performance.now();const t=n=>{window.__f.push(n-l);l=n;requestAnimationFrame(t)};requestAnimationFrame(t)});
+await p.waitForTimeout(30000);
+const f = await p.evaluate(()=>window.__f.slice(20));
+const s=[...f].sort((a,c)=>a-c);
+console.log(W+'x'+H, JSON.stringify({frames:f.length, meanMs:+(f.reduce((a,c)=>a+c,0)/f.length).toFixed(1), p95:+s[Math.floor(s.length*.95)].toFixed(1), level: await p.evaluate(()=>window.__ATLAS_LEVEL__), render: await p.evaluate(()=>window.__ATLAS_RENDER__?.())}));
+await b.close();
