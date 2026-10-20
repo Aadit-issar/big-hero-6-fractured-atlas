@@ -127,3 +127,7 @@ Select a fold to route to its entrance (where a fold leads is never inferred) or
 - Surface textures: Poly Haven CC0 1.0 sets; see [docs/ASSET_PROVENANCE.md](docs/ASSET_PROVENANCE.md). All 3D models are original project geometry generated for this project, with procedural textures; some shapes were guided by AI-generated concept sheets.
 - *Big Hero 6*, Baymax, Hiro and related names and characters belong to Disney. This is an independent, non-commercial fan project made for a competition; it is not affiliated with or endorsed by Disney. No licence is granted over those properties, and no open-source licence has been applied to this repository.
 - Open-source dependencies keep their own licences (see `package-lock.json`).
+
+## Start-up notice
+
+On first launch a small, dismissible card reminds you that ATLAS Command and the Fractured Dimension are meant to be installed together from GitHub. It disappears automatically once the Dimension connects. **Got it** hides it for this visit, **Don't show again** remembers the choice in the browser, and `?pairNotice=0` suppresses it. It never blocks any other control.

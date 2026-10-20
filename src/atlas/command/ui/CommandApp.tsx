@@ -14,6 +14,7 @@ import { PredictPanel } from './panels/PredictPanel';
 import { RoutePanel } from './panels/RoutePanel';
 import { EventToast } from './panels/EventToast';
 import { OpeningCard } from './panels/OpeningCard';
+import { PairNotice } from './panels/PairNotice';
 import './command.css';
 
 export const DEFAULT_DIMENSION_URL = 'http://127.0.0.1:4183/?quality=cinematic&view=baymax';
@@ -91,6 +92,7 @@ export function CommandApp() {
         eco={eco} setEco={setEco} labels={labels} setLabels={setLabels} quality={quality} setQuality={setQuality} />
 
       {opening && <OpeningCard snap={snap} session={session} />}
+      <PairNotice which="atlas" hidden={snap.connected} />
 
       {!opening && (
         <>
