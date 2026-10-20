@@ -15,7 +15,6 @@ export function OpeningCard({ snap, session }: { snap: CommandSnapshot; session:
       </ol>
       <div className="row">
         <button className="primary big" type="button" onClick={() => session.openDimension()} data-testid="open-dimension">{connecting ? 'Retry connection' : 'Open Dimension and connect'}</button>
-        <a href="?experience=mission">Guided mission replay</a>
       </div>
       <small>{snap.link.status === 'disconnected' ? 'The last attempt timed out. ' : ''}{session.dimensionUrl}</small>
     </div>

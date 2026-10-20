@@ -26,7 +26,7 @@
 | Worktree | `C:\Users\aadit\BigHero6-wk-live-dimension` | `C:\Users\aadit\BigHero6-wk-live-atlas` |
 | Branch | `dimension-live-interception` (from `dimension` 2b6fd4e) | `atlas-live-interception` (from `atlas-controlled-challenge` 2b6ccdb) |
 | Port | 4183 (preview or dev) | 5184 (preview), 5180 (dev) |
-| Entry | `src/main.tsx` → `App` | `src/atlas/lab/index.html` → `MissionApp` → `CommandApp` (default); `?experience=mission` is the preserved scripted replay |
+| Entry | `src/main.tsx` → `App` | `src/atlas/lab/index.html` → `MissionApp` → `CommandApp` (default) |
 
 The branches share one Git history and are never merged: they exchange only the byte-identical shared files below, copied by `scripts/sync-shared.mjs` (reads the Dimension branch with `git show`, so it works from any worktree; `--check` reports drift). The original `dimension` and `atlas-*` branches and the submitted Mission archive are untouched.
 

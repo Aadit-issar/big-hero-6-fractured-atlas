@@ -16,7 +16,7 @@
 | Role | The world and the truth: field, folds, moving objects, Baymax's flight | Remembers, predicts, plans, explains |
 | Port | `4183` | `5184` |
 
-`DIMENSION → observations → ATLAS memory → prediction → planning → route → DIMENSION navigation → new observations`. ATLAS needs a running Dimension to be useful; a clearly labelled guided replay (`?experience=mission`) and a controlled challenge (`?experience=challenge`) also run without it.
+`DIMENSION → observations → ATLAS memory → prediction → planning → route → DIMENSION navigation → new observations`. ATLAS needs a running Dimension to be useful.
 
 ## What is in this repository
 

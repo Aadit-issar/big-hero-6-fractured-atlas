@@ -1,6 +1,6 @@
 # ATLAS Command overhaul: what changed and what was measured
 
-Scope: the "final overhaul" pass on top of the verified live build (`docs/ATLAS_LIVE_FINAL_ARCHITECTURE.md`). Nothing was merged or reset; the original worktrees, the scripted Mission replay (`?experience=mission`) and the submitted archive are untouched. Before/after screenshots at 1920x1080: `docs/evidence/overhaul/before/` and `docs/evidence/overhaul/after/`.
+Scope: the "final overhaul" pass on top of the verified live build (`docs/ATLAS_LIVE_FINAL_ARCHITECTURE.md`). Nothing was merged or reset; the original worktrees and the submitted archive are untouched. Before/after screenshots at 1920x1080: `docs/evidence/overhaul/before/` and `docs/evidence/overhaul/after/`.
 
 ## 1. One forecast, three modes
 
